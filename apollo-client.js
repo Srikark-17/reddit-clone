@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "https://capitaopoco.stepzen.net/api/kindly-mink/__graphql",
+  uri: "https://capitaopoco.stepzen.net/api/musty-hydra/__graphql",
   headers: {
     Authorization: `Apikey ${process.env.NEXT_PUBLIC_STEPZEN_KEY}`,
   },
