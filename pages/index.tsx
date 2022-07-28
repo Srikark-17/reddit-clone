@@ -5,17 +5,18 @@ import Postbox from "../components/Postbox";
 
 const Home: NextPage = () => {
   return (
-    <div className="max-w-5xl mx-auto my-7">
+    <>
       <Head>
         <title>Reddit Clone</title>
       </Head>
-      <div>
+      <div className="max-w-5xl mx-auto my-7">
         <Postbox />
+
+        <div className="flex">
+          <Feed />
+        </div>
       </div>
-      <div className="flex">
-        <Feed />
-      </div>
-    </div>
+    </>
   );
 };
 
