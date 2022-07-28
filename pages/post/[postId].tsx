@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
 import Post from "../../components/Post";
@@ -14,9 +15,14 @@ const PostPage = () => {
 
   const post: Post = data?.getPostListByPostId;
   return (
-    <div className="mx-auto my-7 max-w-5xl">
-      <Post post={post} />
-    </div>
+    <>
+      <Head>
+        <title>Reddit Clone - {post?.title}</title>
+      </Head>
+      <div className="mx-auto my-7 max-w-5xl">
+        <Post post={post} />
+      </div>
+    </>
   );
 };
 
