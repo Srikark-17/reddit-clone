@@ -47,7 +47,6 @@ const Post = ({ post }: Props) => {
     if (vote && isUpvote) return;
     if (vote === false && !isUpvote) return;
 
-    console.log("voting...", isUpvote);
     const {
       data: { insertVote: newVote },
     } = await addVote({
@@ -61,8 +60,6 @@ const Post = ({ post }: Props) => {
 
   useEffect(() => {
     const votes: Vote[] = data?.getVotesByPostId;
-
-    console.log(votes);
 
     const vote = votes?.find(
       (vote) => vote.username === session?.user?.name

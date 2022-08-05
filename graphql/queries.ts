@@ -5,6 +5,7 @@ export const GET_SUBREDDIT_BY_TOPIC = gql`
     getSubredditListByTopic(topic: $topic) {
       id
       topic
+      description
       created_at
     }
   }

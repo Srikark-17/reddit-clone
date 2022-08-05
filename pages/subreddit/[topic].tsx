@@ -1,14 +1,36 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
+import { useQuery } from "@apollo/client";
 import Avatar from "../../components/Avatar";
 import Feed from "../../components/Feed";
 import Postbox from "../../components/Postbox";
+import {
+  GET_ALL_POSTS,
+  GET_ALL_POSTS_BY_TOPIC,
+  GET_SUBREDDIT_BY_TOPIC,
+} from "../../graphql/queries";
+import client from "../../apollo-client";
 
 const Subreddit = () => {
   const {
     query: { topic },
   } = useRouter();
+  const [description, setDescription] = useState();
+
+  const getData = async () => {
+    const {
+      data: { getSubredditListByTopic },
+    } = await client.query({
+      query: GET_SUBREDDIT_BY_TOPIC,
+      variables: {
+        topic: topic,
+      },
+    });
+    setDescription(getSubredditListByTopic[0]?.description);
+  };
+
+  getData();
 
   return (
     <>
@@ -24,9 +46,7 @@ const Subreddit = () => {
 
             <div className="py-2">
               <h1 className="text-3xl font-semibold ">Welcome to r/{topic}!</h1>
-              <p className="text-sm text-gray-400">
-                You can talk about things related to {topic} here!
-              </p>
+              <p className="text-sm text-gray-400">{description}</p>
             </div>
           </div>
         </div>

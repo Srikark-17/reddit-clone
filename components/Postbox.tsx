@@ -52,11 +52,21 @@ const Postbox = ({ subreddit }: Props) => {
       const subredditExists = getSubredditListByTopic.length > 0;
 
       if (!subredditExists) {
+        const subreddDesc = prompt(
+          "This is a new subreddit! Add a description if you'd like"
+        );
+        console.log("added");
+
         const {
           data: { insertSubreddit: newSubreddit },
         } = await addSubreddit({
           variables: {
             topic: subreddit || formData.subreddit,
+            description: subreddDesc
+              ? subreddDesc
+              : `You can talk about things related to ${
+                  subreddit || formData.subreddit
+                } here!`,
           },
         });
         const image = formData.postImage || "";

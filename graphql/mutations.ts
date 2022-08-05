@@ -51,11 +51,12 @@ export const ADD_POST = gql`
 `;
 
 export const ADD_SUBREDDIT = gql`
-  mutation MyMutation($topic: String!) {
-    insertSubreddit(topic: $topic) {
+  mutation MyMutation($topic: String!, $description: String!) {
+    insertSubreddit(topic: $topic, description: $description) {
       id
       topic
       created_at
+      description
     }
   }
 `;

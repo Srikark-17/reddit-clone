@@ -35,6 +35,7 @@ type Subreddit {
   created_at: DateTime
   id: ID!
   topic: String
+  description: String
 }
 
 type Vote {
@@ -201,7 +202,7 @@ type Mutation {
       configuration: "postgresql_config"
     )
 
-  insertSubreddit(topic: String!): Subreddit
+  insertSubreddit(topic: String!, description: String!): Subreddit
     @dbquery(
       type: "postgresql"
       schema: "public"
