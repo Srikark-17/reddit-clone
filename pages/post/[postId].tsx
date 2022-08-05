@@ -11,6 +11,8 @@ import { ADD_COMMENT } from "../../graphql/mutations";
 import Avatar from "../../components/Avatar";
 import TimeAgo from "react-timeago";
 
+// TODO: Order comments from recent to old
+
 type FormData = {
   comment: String;
 };
