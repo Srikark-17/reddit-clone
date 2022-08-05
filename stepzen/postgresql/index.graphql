@@ -87,6 +87,7 @@ type Query {
       type: "postgresql"
       query: """
       select * from "comment" where "post_id" = $1
+      order by "comment"."created_at" desc
       """
       configuration: "postgresql_config"
     )
